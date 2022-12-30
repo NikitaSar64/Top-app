@@ -1,7 +1,11 @@
+import { Button, Htag } from "../components";
+
 export default function Home(): JSX.Element {
   return (
-    <div>
-      qqq
-    </div>
+    <>
+      <Htag tag='h1'>something</Htag>
+      <Button appearence="primary">Button</Button>
+      <Button appearence="ghost" arrow="down">Button</Button>
+    </>
   );
 }
