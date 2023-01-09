@@ -15,7 +15,7 @@ export interface HhDate {
     _id: string;
     count: number;
     juniorSalary: number;
-    middlesalary: number;
+    middleSalary: number;
     seniorSalary: number;
     updatedAt: Date;
 }
