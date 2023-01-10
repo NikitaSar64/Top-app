@@ -3,7 +3,7 @@ body {
 	margin: 0;
 	padding: 0;
 	color: var(--black);
-	/* background: #E5E5E5; */
+	background: #F5F6F8;
 	font-family: "Noto Sans", sans-serif;
 }
 
@@ -19,6 +19,7 @@ a {
 :root{
 	--black: #3B434E;
 	--gray-light: #ebebeb;
+	--gray: #A4A4A4;
 	--gray-dark: #787D85;
 	--white: white;
 	--primary: #7653FC;
