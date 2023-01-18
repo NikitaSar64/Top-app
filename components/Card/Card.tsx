@@ -11,5 +11,5 @@ export const Card = ( { color = 'white', children , className, ...props} : CardP
         >
             {children}
         </div>
-    )
+    );
 };

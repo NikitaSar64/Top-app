@@ -9,12 +9,6 @@
 		"@typescript-eslint/semi": [
 			"warn"
 		],
-		"@typescript-eslint/explicit-function-return-type": [
-			"error", 
-			{ 
-				"allowTypedFunctionExpressions": false 
-			}
-		],
 		"@typescript-eslint/no-empty-interface": [
 			"error",
 			{

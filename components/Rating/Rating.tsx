@@ -51,7 +51,7 @@ export const Rating = ( { isEditable = false, rating, setRating, ...props} : Rat
             return;
         }
         setRating(i);
-    }
+    };
     
     return (
         <div {...props}>

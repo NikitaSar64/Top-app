@@ -7,11 +7,11 @@ import RateIcon from './rate.svg';
 export const HhData = ( { count, juniorSalary, seniorSalary, middleSalary} : HhDataProps) : JSX.Element => {
     return (
         <div className={styles.hh}>
-            <Card className={styles.count}>
+            <Card className={styles.count} color='white'>
                 <div className={styles.title}>Всего вакансии</div>
                 <div className={styles.countValue}>{count}</div>
             </Card>
-            <Card className={styles.salary}>
+            <Card className={styles.salary} color='white'>
                 <div>
                     <div className={styles.title}>Начальный</div>
                     <div className={styles.salaryValue}>{priceRu(juniorSalary)}</div>
