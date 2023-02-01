@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { devlOfNum, priceRu } from '../../helpers/helpers';
 import { Button } from '../Button/Button';
 import { Card } from '../Card/Card';
@@ -12,11 +12,20 @@ import Image from 'next/image';
 import { Review } from '../Review/Review';
 import { ReviewForm } from '../ReviewForm/ReviewForm';
 
-export const Product = ( { product } : ProductProps ) : JSX.Element => {
+export const Product = ( { product, className, ...props } : ProductProps ) : JSX.Element => {
     const [isReviewOpened, setIsReviewOpened] = useState<boolean>(false);
+    const reviewRef = useRef<HTMLDivElement>(null);
+
+    const scrollToReview = () => {
+        setIsReviewOpened(true);
+        reviewRef.current.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+    };
 
     return (
-        <>
+        <div className={className} {...props}>
             <Card color='white' className={styles.product}>
                 <div className={styles.logo}>
                     <Image
@@ -38,7 +47,7 @@ export const Product = ( { product } : ProductProps ) : JSX.Element => {
                 <div className={styles.tags}>{product.categories.map(c => <Tag className={styles.category} key={c} color='ghost'>{c}</Tag>)}</div>
                 <div className={styles.priceTitle}>цена</div>
                 <div className={styles.creditTitle}>кредит</div>
-                <div className={styles.rateTitle}>{product.reviewCount} {devlOfNum(product.reviewCount, ['отзыв','отзыва','отзывов'])}</div>
+                <div className={styles.rateTitle}><a href="#ref" onClick={scrollToReview}>{product.reviewCount} {devlOfNum(product.reviewCount, ['отзыв','отзыва','отзывов'])}</a></div>
                 <Divider className={styles.hr}/>
                 <div className={styles.description}>{product.description}</div>
                 <div className={styles.feature}>
@@ -76,15 +85,15 @@ export const Product = ( { product } : ProductProps ) : JSX.Element => {
             <Card color='blue' className={cn(styles.reviews, {
                 [styles.opened]: isReviewOpened,
                 [styles.closed]: !isReviewOpened,
-            })}>
+            })} ref={reviewRef}>
                 {product.reviews.map(r => (
-                    <>
+                    <div>
                         <Review key={r._id} review={r}/>
                         <Divider/>
-                    </>
+                    </div>
                 ))}
                 <ReviewForm productId={product._id}/>
             </Card>
-        </>
+        </div>
     );
 };
